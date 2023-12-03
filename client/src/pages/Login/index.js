@@ -12,6 +12,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
+import Register from '../Register'
 
 export default function App() {
   return (
@@ -48,7 +49,7 @@ export default function App() {
           <View style={styles.signUpContainer}>
             <Text style={styles.signUpText}>Não possui uma conta?</Text>
             <TouchableOpacity>
-              <Text style={styles.signUpButton}>Cadastre-se!</Text>
+              <Text style={styles.signUpButton} onPress={Register}>Cadastre-se!</Text>
             </TouchableOpacity>
           </View>
         </View>
