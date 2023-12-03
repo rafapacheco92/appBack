@@ -12,16 +12,8 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
-import axios from 'axios';
 
 export default function App() {
-
-  const apiCall = () => {
-    axios.get('http://localhost:3000').then(() => {
-      console.log('working');
-    })
-  }
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -41,7 +33,7 @@ export default function App() {
               <Text style={styles.forgotText}>Esqueceu sua senha?</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.loginButton} onPress={apiCall}>
+          <TouchableOpacity style={styles.loginButton}>
             <Text style={styles.loginText}>Acessar</Text>
           </TouchableOpacity>
 
