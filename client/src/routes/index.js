@@ -8,12 +8,14 @@ import Search from '../pages/Search';
 import ButtonNew from '../components/buttonNewPost';
 import Login from '../pages/Login';
 
+import Register from "../pages/Register" //TODO remover
+
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
 export function Routes() {
-  return false ? (
+  return true ? (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -96,7 +98,7 @@ export function Routes() {
       />
     </Tab.Navigator>
   ) : (
-    <Login />
+    <Register />
   );
   // <Login></Login>
   // <Tab.Navigator

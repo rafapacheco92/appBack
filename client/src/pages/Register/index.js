@@ -12,21 +12,60 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
+  Button,
 } from 'react-native';
 import Register from '../Register';
+import { api } from '../../lib/axios';
 
 export default function App() {
   const [isMaiorIdade, setIsMaiorIdade] = useState(false);
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    password: ""
+  })
+
+
+  const handleOnSubmit = () => {
+    console.log("entrou")
+    api.post("/user/cadastro", {
+      name: values.name,
+      email: values.email,
+      pass: values.password
+    }).then(() => console.log("cadastrou")).catch((erro) => console.log(JSON.stringify(erro, null, 4)))
+  }
+
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <StatusBar backgroundColor="#fff" translucent={false} />
-          <Image source={require('./src/img/color_transparent_name_png.png')} style={styles.logo} />
-          <TextInput placeholder='Nome' style={styles.input} />
-          <TextInput placeholder='Email' style={styles.input} />
-          <TextInput placeholder='Senha' style={styles.input} />
+          {/* <Image source={require('./src/img/color_transparent_name_png.png')} style={styles.logo} /> */}
+          <TextInput
+            placeholder='Nome'
+            value={values.name}
+            style={styles.input}
+            onChangeText={(text) => setValues({
+              ...values,
+              name: text
+            })} />
+          <TextInput
+            placeholder='Email'
+            value={values.email}
+            style={styles.input}
+            onChangeText={(text) => setValues({
+              ...values,
+              email: text
+            })} />
+          <TextInput
+            value={values.password}
+            placeholder='Senha'
+            style={styles.input}
+            onChangeText={(text) => setValues({
+              ...values,
+              password: text
+            })} />
           {/* <View style={styles.labelCheckbox}>
             <Checkbox
               value={isMaiorIdade}
@@ -34,8 +73,8 @@ export default function App() {
             />
             <Text style={styles.checkboxText}>Declaro que sou maior de 18 anos.</Text>
           </View> */}
-          <TouchableOpacity style={styles.loginButton}>
-            <Text style={styles.loginText} onPress={Register}>Cadastrar</Text>
+          <TouchableOpacity style={styles.loginButton} onPress={handleOnSubmit}>
+            <Text style={styles.loginText} >Cadastr</Text>
           </TouchableOpacity>
         </View>
       </TouchableWithoutFeedback>

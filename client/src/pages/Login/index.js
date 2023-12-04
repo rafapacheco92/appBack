@@ -12,9 +12,16 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
-import Register from '../Register'
+import axios from 'axios';
 
 export default function App() {
+
+  const apiCall = () => {
+    axios.get('http://localhost:3000').then(() => {
+      console.log('working');
+    })
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -34,7 +41,7 @@ export default function App() {
               <Text style={styles.forgotText}>Esqueceu sua senha?</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.loginButton}>
+          <TouchableOpacity style={styles.loginButton} onPress={apiCall}>
             <Text style={styles.loginText}>Acessar</Text>
           </TouchableOpacity>
 
@@ -49,7 +56,7 @@ export default function App() {
           <View style={styles.signUpContainer}>
             <Text style={styles.signUpText}>Não possui uma conta?</Text>
             <TouchableOpacity>
-              <Text style={styles.signUpButton} onPress={Register}>Cadastre-se!</Text>
+              <Text style={styles.signUpButton}>Cadastre-se!</Text>
             </TouchableOpacity>
           </View>
         </View>

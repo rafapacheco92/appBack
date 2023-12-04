@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-
+import Login from '../Login/index'
+import Register from '../Register/index'
 import {
   View,
   Text,
@@ -37,19 +38,22 @@ api
 
 export default function Home() {
   const { feedItems } = useMeuContexto();
+  let isLogged = false
 
   return (
-    <View style={styles.container}>
-      <Text>{email}</Text>
-      <FlatList
-        data={feedItems}
-        renderItem={({ item }) => <FeedItem data={item} />}
-        snapToInterval={heightScreen}
-        scrollEventThrottle={200}
-        decelerationRate={'fast'}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
+
+    <Register />
+    // <View style={styles.container}>
+    //   <Text>{email}</Text>
+    //   <FlatList
+    //     data={feedItems}
+    //     renderItem={({ item }) => <FeedItem data={item} />}
+    //     snapToInterval={heightScreen}
+    //     scrollEventThrottle={200}
+    //     decelerationRate={'fast'}
+    //     showsVerticalScrollIndicator={false}
+    //   />
+    // </View>
   );
 }
 

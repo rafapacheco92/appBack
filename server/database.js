@@ -1,13 +1,7 @@
 import Sequelize from "sequelize"
 
 const Connection = new Sequelize(
-  'backend',
-  'admin',
-  '123456',
-  {
-    host: 'localhost',
-    dialect: 'mysql'
-  }
+  'postgres://docker:docker@localhost:5432/banco'
 )
 
 export default Connection
